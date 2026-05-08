@@ -13,14 +13,9 @@ class Product {
     required this.price,
     required this.image,
     required this.category,
-    ,
   });
 
-  /// Supprime les balises HTML du résumé TVMaze.
-  static String _stripHtml(String? html) {
-    if (html == null) return '';
-    return html.replaceAll(RegExp(r'<[^>]*>'), '').trim();
-  }
+
 
   factory Product.fromJson(Map<String, dynamic> json) {
     // Supporte le format TVMaze (clés 'title', 'description', 'genre', 'categorie', 'image', 'price')

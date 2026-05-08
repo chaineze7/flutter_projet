@@ -3,7 +3,13 @@ import 'package:sqflite/sqflite.dart';
 import '../models/cart_item.dart';
 
 class CartDatabaseService {
+
+  final String? databasePath;
   Database? _db;
+
+  CartDatabaseService({
+    this.databasePath,
+  });
 
 
   Future<Database> get _database async {

@@ -10,7 +10,7 @@ class CartItem {
     });
 
     Map<String, dynamic> toJson() => {
-        'product': product.toJson();
+        'product': product.toJson(),
         'quantity': quantity,
     };
 

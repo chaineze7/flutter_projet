@@ -5,6 +5,8 @@ import '../models/product.dart';
 class ProductApiService {
   static const _baseUrl = 'https://fakeapi.platzi.com/';
 
+  static const _timeout = Duration(seconds: 10);
+
   final http.Client _client;
 
   ProductApiService({http.Client? client}) : _client = client ?? http.Client();
@@ -32,12 +34,14 @@ class ProductApiService {
 
   /// Données de secours si réseau indisponible.
   List<Product> getMockProducts() => [
-    const Product(
-      id: 0,
-      nom: 'Mode hors-ligne',
-      description: 'Pas de connexion réseau.',
-      price: '-',
-      category: '-',
-    ),
+      const Product(
+        id: 0,
+        title: 'Mode hors ligne',
+        description:
+            'Pas de connexion réseau.',
+        price: 0,
+        image: '',
+        category: '-',
+      ),
   ];
 }

@@ -24,7 +24,7 @@ class ProductProvider with ChangeNotifier {
       _products = await _apiService.fetchProducts();
     } catch (e) {
       _error = 'Impossible de charger les produits.';
-      _products = _apiService.getMockSeries();
+      _products = _apiService.getMockProducts();
     } finally {
       _isLoading = false;
       // fetchSeries() est async : quand on arrive ici, le build est terminé.

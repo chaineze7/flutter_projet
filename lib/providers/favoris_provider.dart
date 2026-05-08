@@ -21,7 +21,7 @@ class FavorisProvider with ChangeNotifier {
 
   Future<void> toggleFavori(Product product) async {
     if (_favoris.any((p) => p.id == product.id)) {
-      _favoris.removeWhere((s) => p.id == product.id);
+      _favoris.removeWhere((p) => p.id == product.id);
     } else {
       _favoris.add(product);
     }

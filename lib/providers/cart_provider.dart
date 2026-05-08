@@ -4,7 +4,7 @@ import '../models/cart_item.dart';
 import '../services/cart_database_service.dart';
 
 class CartProvider with ChangeNotifier {
-  final CastDatabaseService _dbService;
+  final CartDatabaseService _dbService;
 
   List<CartItem> _items = [];
   
@@ -26,22 +26,23 @@ class CartProvider with ChangeNotifier {
 
 
   Future<void> ajouterProduit(Product product) async {
-    final index = _items.indexWhere((i) => i.product.id == product.id);
+    final index = _items.indexWhere((i) => i.product.id == product.id,);
     if (index >= 0) {
-      _items[index].quantity = quantity;
+      _items[index].quantity++;
     } else {
-        _items.add(CartItem(product: product));
+      _items.add(CartItem(product: product),);
     }
     
-    await _dbService.saveCart(_items);
+    await _dbService.saveCart(_items,);
       
     notifyListeners();
 }
 
-Future<void> retirerProduit(int productId) async {
-    _items.removeWhere((i) => i.product.id == productId);
+  Future<void> retirerProduit(int productId) async {
+      _items.removeWhere((i) => i.product.id == productId);
 
-    await _dbService.saveCart(_items);
+      await _dbService.saveCart(_items);
 
-    notifyListeners();
+      notifyListeners();
+    }
 }
