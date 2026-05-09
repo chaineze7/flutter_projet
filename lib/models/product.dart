@@ -3,7 +3,7 @@ class Product {
   final String title;
   final String description;
   final double price;
-  final String image;
+  final String? imageUrl;
   final String category;
 
   const Product({
@@ -11,7 +11,7 @@ class Product {
     required this.title,
     required this.description,
     required this.price,
-    required this.image,
+    this.imageUrl,
     required this.category,
   });
 
@@ -20,29 +20,31 @@ class Product {
   factory Product.fromJson(Map<String, dynamic> json) {
     // Supporte le format TVMaze (clés 'title', 'description', 'genre', 'categorie', 'image', 'price')
     // ET le format de stockage interne produit par toJson() (clés 'title', 'description', 'price', etc.)
+
+    final images = json['images'] as List<dynamic>?;
+
     return Product(
-      id: json['id'],
-      title: json['title'] ?? '',
-      description: json['description'] ?? '',
+      id: json['id'] as int,
+      title: json['title'] as String? ?? 'Sans titre',
+      description: json['description'] as String? ?? '',
       price: (json['price'] as num).toDouble(),
-      image: json['images'] != null
-          ? json['images'][0]
-          : json['image'] ?? '',
-      category: json['category'] != null
-          ? json['category']['name'] ?? 'Inconnu'
-          : 'Inconnu',
-      
+      imageUrl: images != null && images.isNotEmpty
+          ? images[0] as String
+          : json['imageUrl'] as String?,
+      category: json['category'] is Map
+          ? json['category']['name'] as String? ?? 'Inconnu'
+          : json['category'] as String? ?? 'Inconnu',
     );
-  }
+  } 
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'title': title,
-    'description': description,
-    'price': price,
-    'image': image,
-    'category': category,
-  };
+        'id': id,
+        'title': title,
+        'description': description,
+        'price': price,
+        'imageUrl': imageUrl,
+        'category': category,
+      };
 
   @override
   bool operator ==(Object other) => other is Product && other.id == id;

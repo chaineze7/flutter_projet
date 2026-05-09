@@ -20,8 +20,12 @@ class FavorisScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               final product = provider.favoris[index];
               return ListTile(
-                leading: product.image.isNotEmpty
-                    ? Image.network(product.image, width: 50)
+                leading: product.imageUrl != null
+                    ? Image.network(product.imageUrl!, width: 50,
+                    errorBuilder: (context, error, stackTrace) {
+                    return const Icon(Icons.image_not_supported);
+                    },
+                  )
                     : const Icon(Icons.shopping_bag),
                 title: Text(product.title),
                 subtitle: Text(product.category),

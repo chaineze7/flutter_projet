@@ -25,7 +25,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Liste des produits'),
+        title: const Text('Articles'),
         actions: [
           IconButton(
             icon: const Icon(Icons.favorite),
@@ -71,12 +71,15 @@ class _ProductListScreenState extends State<ProductListScreen> {
 
               return ListTile(
 
-                leading: product.image.isNotEmpty
+                leading: product.imageUrl != null
                     ? Image.network(
-                        product.image,
+                        product.imageUrl!,
                         width: 50,
                         fit: BoxFit.cover,
-                      )
+                        errorBuilder: (context, error, stackTrace) {
+                        return const Icon(Icons.image_not_supported);
+                      },
+                    )
                     : const Icon(Icons.image),
 
                 title: Text(product.title),

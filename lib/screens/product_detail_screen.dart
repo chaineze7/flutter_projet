@@ -29,17 +29,24 @@ class ProductDetailScreen extends StatelessWidget {
 
           final product = snapshot.data!;
 
-          return SingleChildScrollView(
+          return SingleChildScrollView( 
             padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Image du produit avec le Hero tag corrigé
-                if (product.image.isNotEmpty)
+                if (product.imageUrl != null )
                   Center(
                     child: Hero(
                       tag: 'product_hero_${product.id}', 
-                      child: Image.network(product.image, height: 250, fit: BoxFit.contain),
+                      child: Image.network(product.imageUrl!, height: 250, fit: BoxFit.contain,
+                        errorBuilder: (context, error, stackTrace) {
+                          return const Icon(
+                            Icons.image_not_supported,
+                            size: 100,
+                          );
+                        },
+                      ),
                     ),
                   ),
                 const SizedBox(height: 20),

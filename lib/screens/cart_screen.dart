@@ -23,9 +23,13 @@ class CartScreen extends StatelessWidget {
               
               return ListTile(
                 
-                leading: item.product.image.isNotEmpty
-                    ? Image.network(item.product.image, width: 50)
-                    : const Icon(Icons.shopping_bag),
+                leading: item.product.imageUrl != null
+                    ? Image.network(item.product.imageUrl!, width: 50,
+                    errorBuilder: (context, error, stackTrace) {
+                    return const Icon(Icons.image_not_supported);
+                    },
+                  )
+                  : const Icon(Icons.shopping_bag),
                 
                 
                 title: Text(item.product.title),

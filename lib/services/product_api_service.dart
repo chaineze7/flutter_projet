@@ -40,7 +40,7 @@ class ProductApiService {
         description:
             'Pas de connexion réseau.',
         price: 0,
-        image: '',
+        imageUrl: '',
         category: '-',
       ),
   ];
