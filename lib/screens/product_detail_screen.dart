@@ -70,21 +70,20 @@ class ProductDetailScreen extends StatelessWidget {
                 const Text('Description', style: TextStyle(fontWeight: FontWeight.bold)),
                 const SizedBox(height: 5),
                 Text(product.description),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
 
                 // Section Favoris
                 Consumer<FavorisProvider>(
                   builder: (context, favorisProvider, _) {
                     final estFavori = favorisProvider.estFavori(product.id);
-                    return OutlinedButton.icon(
+                    return ElevatedButton.icon(
                       onPressed: () => favorisProvider.toggleFavori(product),
-                      style: OutlinedButton.styleFrom(minimumSize: const Size.fromHeight(50)),
                       icon: Icon(estFavori ? Icons.favorite : Icons.favorite_border, color: Colors.red),
                       label: Text(estFavori ? 'Retirer des favoris' : 'Ajouter aux favoris'),
                     );
                   },
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
 
                 // Section Panier (Adaptée à ton CartProvider)
                 Consumer<CartProvider>( 
@@ -108,7 +107,7 @@ class ProductDetailScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: estDansLePanier ? Colors.orange : Colors.blue,
                         foregroundColor: Colors.white,
-                        minimumSize: const Size.fromHeight(50),
+                        
                       ),
                       icon: Icon(estDansLePanier ? Icons.shopping_cart : Icons.add_shopping_cart),
                       label: Text(estDansLePanier ? 'Retirer du panier' : 'Ajouter au panier'),
