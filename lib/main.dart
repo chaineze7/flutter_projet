@@ -5,7 +5,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'providers/product_provider.dart';
 import 'providers/favoris_provider.dart';
 import 'providers/cart_provider.dart';
-
+import 'router.dart';
 
 void main() {
   if (Platform.isMacOS || Platform.isWindows || Platform.isLinux) {
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
       ),
-      //routerConfig: router,
+      routerConfig: router,
     );
   }
 }

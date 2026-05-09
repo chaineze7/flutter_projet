@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import '../models/product.dart';
 
 class ProductApiService {
-  static const _baseUrl = 'https://fakeapi.platzi.com/';
+  static const _baseUrl = 'https://api.escuelajs.co/api/v1';
 
   static const _timeout = Duration(seconds: 10);
 

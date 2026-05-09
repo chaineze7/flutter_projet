@@ -13,6 +13,10 @@ class CartProvider with ChangeNotifier {
   
   int get itemCount => _items.length;
 
+  bool estDansLePanier(int productId) {
+    return _items.any((item) => item.product.id == productId);
+  }
+
   CartProvider({CartDatabaseService? dbService})
       : _dbService = dbService ?? CartDatabaseService() {
     _chargerPanier();

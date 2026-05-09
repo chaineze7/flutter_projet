@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../providers/product_provider.dart';
 import '../providers/cart_provider.dart';
 
+
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});
 
@@ -24,7 +25,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ProductListe'),
+        title: const Text('Liste des produits'),
         actions: [
           IconButton(
             icon: const Icon(Icons.favorite),
@@ -36,7 +37,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
               isLabelVisible: cartProvider.itemCount > 0,
               label: Text(cartProvider.itemCount.toString()),
               child: IconButton(
-                icon: const Icon(Icons.shooping_cart),
+                icon: const Icon(Icons.shopping_cart),
                 onPressed: () => context.go('/cart'),
               ),
             ),
