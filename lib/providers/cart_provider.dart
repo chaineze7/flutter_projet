@@ -18,11 +18,9 @@ class CartProvider with ChangeNotifier {
   }
 
   CartProvider({CartDatabaseService? dbService})
-      : _dbService = dbService ?? CartDatabaseService() {
-    _chargerPanier();
-  }
+      : _dbService = dbService ?? CartDatabaseService();
 
-  Future<void> _chargerPanier() async {
+  Future<void> init() async {
     _items = await _dbService.getCart();
     notifyListeners();
     
