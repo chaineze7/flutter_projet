@@ -15,7 +15,7 @@ class MockHttpClient extends http.BaseClient {
 
     final bytes = utf8.encode(responseBody);
 
-    final stream = Stream.fromIterable([bytes]); // 🔥 FIX IMPORTANT
+    final stream = Stream.fromIterable([bytes]); 
 
     return http.StreamedResponse(
       stream,

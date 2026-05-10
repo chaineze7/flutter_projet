@@ -6,7 +6,11 @@ import 'screens/cart_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/register_screen.dart';
 
+
+// Configuration des routes de l'application
 final router = GoRouter(
+
+  // Premiere page affichée au lancement
   initialLocation: '/login',
 
   routes: [

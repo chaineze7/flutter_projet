@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/product.dart';
 
+
 class ProductApiService {
   static const _baseUrl = 'https://api.escuelajs.co/api/v1';
 
@@ -11,6 +12,7 @@ class ProductApiService {
 
   ProductApiService({http.Client? client}) : _client = client ?? http.Client();
 
+  // Récupère tous les produits depuis l'API
   Future<List<Product>> fetchProducts({int page = 0}) async {
     final uri = Uri.parse('$_baseUrl/products?page=$page');
     final response = await _client.get(uri).timeout(_timeout);

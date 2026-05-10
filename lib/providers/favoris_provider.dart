@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/product.dart';
 import '../services/preferences_service.dart';
 
+// Gestion des articles favoris avec sauvegarde locale
 class FavorisProvider with ChangeNotifier {
   final PreferencesService _prefsService;
 
@@ -19,6 +20,7 @@ class FavorisProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  // Ajoute ou retire un produit des favoris
   Future<void> toggleFavori(Product product) async {
     if (_favoris.any((p) => p.id == product.id)) {
       _favoris.removeWhere((p) => p.id == product.id);

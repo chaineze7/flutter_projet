@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:sqflite/sqflite.dart';
 import '../models/cart_item.dart';
 
+
+// Service SQLite pour sauvegarder le panier localement 
 class CartDatabaseService {
 
   final String? databasePath;

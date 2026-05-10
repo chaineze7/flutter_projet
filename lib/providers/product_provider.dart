@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../models/product.dart';
 import '../services/product_api_service.dart';
 
+
+// Provider responsable du chargement de articles depuis l'API
 class ProductProvider with ChangeNotifier {
   final ProductApiService _apiService;
 
@@ -16,6 +18,8 @@ class ProductProvider with ChangeNotifier {
   ProductProvider({ProductApiService? apiService})
       : _apiService = apiService ?? ProductApiService();
 
+
+  // Charge les produits depuis l' API REST
   Future<void> fetchProducts() async {
     _isLoading = true;
     _error = null;
@@ -27,8 +31,8 @@ class ProductProvider with ChangeNotifier {
       _products = _apiService.getMockProducts();
     } finally {
       _isLoading = false;
-      // fetchSeries() est async : quand on arrive ici, le build est terminé.
-      // notifyListeners() peut donc être appelé.
+      
+      //  Notifie tous les widgets qui écoutent ce provider
       notifyListeners();
     }
   }

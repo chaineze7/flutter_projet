@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-
+// Service de gestion de l'authentification utilisateur
 class AuthService {
   
   final String baseUrl = "https://api.escuelajs.co/api/v1";
@@ -26,7 +26,7 @@ class AuthService {
     print("Token chargé depuis le stockage : $_token");
   }
 
-  
+  // Envoie une requete POST pour connecter un utilisateur
   Future<bool> login(String email, String password) async {
     try {
       final response = await http.post(

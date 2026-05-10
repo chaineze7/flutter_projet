@@ -3,6 +3,8 @@ import '../models/product.dart';
 import '../models/cart_item.dart';
 import '../services/cart_database_service.dart';
 
+
+// Provider qui gère le panier utilisateur
 class CartProvider with ChangeNotifier {
   final CartDatabaseService _dbService;
 
@@ -13,6 +15,7 @@ class CartProvider with ChangeNotifier {
   bool get isLoading => _isLoading;
   int get itemCount => _items.length;
 
+  // Vérifie si un produit est deja present dan le panier 
   bool  estDansLePanier(int productId) {
     return _items.any((item) => item.product.id == productId);
   }
@@ -35,6 +38,8 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
+
+  // Ajoute un produit 
   Future<void> ajouterProduit(Product product) async {
 
     final index = _items.indexWhere((i) => i.product.id == product.id);
@@ -49,6 +54,7 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  // Retirer un produit
   Future<void> retirerProduit(int productId) async {
     _items.removeWhere((i) => i.product.id == productId);
 

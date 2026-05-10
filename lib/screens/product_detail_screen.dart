@@ -6,6 +6,9 @@ import '../providers/favoris_provider.dart';
 import '../providers/cart_provider.dart'; 
 import '../services/auth_service.dart';  
 
+
+
+// Affiche les informations détaillées d'un produit 
 class ProductDetailScreen extends StatelessWidget {
   final int productId;
 

@@ -19,11 +19,13 @@ void main() async {
     databaseFactory = databaseFactoryFfi;
   }
 
+  // Connexion à Supabase
   await Supabase.initialize(
     url:'https://ymgqdivquwmvbzmzjowz.supabase.co',
     anonKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InltZ3FkaXZxdXdtdmJ6bXpqb3d6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MTEzOTcsImV4cCI6MjA5MzM4NzM5N30.c7lAG-yRodJsJ8vNmHbol4AX9_uUSAt3EbsP2Rl1Xtw',
   );
 
+  // Injection des providers dans toute l'application
   runApp(
     MultiProvider(
       providers: [
