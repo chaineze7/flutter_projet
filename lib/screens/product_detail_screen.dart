@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 import '../models/product.dart';
 import '../providers/product_provider.dart'; 
 import '../providers/favoris_provider.dart'; 
-import '../providers/cart_provider.dart';   
+import '../providers/cart_provider.dart'; 
+import '../services/auth_service.dart';  
 
 class ProductDetailScreen extends StatelessWidget {
   final int productId;
@@ -34,7 +35,6 @@ class ProductDetailScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Image du produit avec le Hero tag corrigé
                 if (product.imageUrl != null )
                   Center(
                     child: Hero(
@@ -85,7 +85,7 @@ class ProductDetailScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
 
-                // Section Panier (Adaptée à ton CartProvider)
+                // Section Panier 
                 Consumer<CartProvider>( 
                   builder: (context, cartProvider, _) {
                     final estDansLePanier = cartProvider.estDansLePanier(product.id);

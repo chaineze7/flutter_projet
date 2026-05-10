@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 import '../providers/product_provider.dart';
 import '../providers/cart_provider.dart';
+import '../services/auth_service.dart';
 
 
 class ProductListScreen extends StatefulWidget {
@@ -31,7 +32,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
             icon: const Icon(Icons.favorite),
             onPressed: () => context.go('/favoris'),
           ),
-          // bonus : badge itemCount sur le panier
+          
           Consumer<CartProvider>(
             builder: (context, cartProvider, _) => Badge(
               isLabelVisible: cartProvider.itemCount > 0,
@@ -47,21 +48,21 @@ class _ProductListScreenState extends State<ProductListScreen> {
       body: Consumer<ProductProvider>(
         builder: (context, provider, _) {
 
-          // loading
+          
           if (provider.isLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
           }
 
-          // erreur
+          
           if (provider.error != null) {
             return Center(
               child: Text(provider.error!),
             );
           }
 
-          // liste produits
+          
           return ListView.builder(
             itemCount: provider.products.length,
 
