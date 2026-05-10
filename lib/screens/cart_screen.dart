@@ -55,6 +55,36 @@ class CartScreen extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: Consumer<CartProvider>(
+        builder: (context, provider, _) {
+          if (provider.items.isEmpty) {
+            return const SizedBox();
+          }
+
+          return FloatingActionButton.extended(
+            icon: const Icon(Icons.payment),
+
+            label: const Text("Valider"),
+
+            onPressed: () async {
+
+              // Supprimer tous les produits du panier 
+              for (final item in List.from(provider.items)) {
+
+                await provider.retirerProduit(item.product.id);
+              }
+
+              // Message confirmation achat
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text("Achat validé avec succès"),
+                  backgroundColor: Colors.green,
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
